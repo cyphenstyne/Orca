@@ -22,3 +22,6 @@
 - lock_time
 - is_coinbase
 - has_witness
+
+## Watch list:
+- Add currencies you specify want to track.
