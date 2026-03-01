@@ -1,2 +1,2 @@
-### Cards has a overview and a detailed view, if you do API call 2 times it would be inefficient
-#### Make an API call for the detailed view because the detailed view includes overview data.
+## Problem: Cards has a overview and a detailed view, if you do API call 2 times it would be inefficient
+#### Solution: Make an API call for the detailed view because the detailed view includes overview data.
