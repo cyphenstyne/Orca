@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import MainFeed from './MainFeed.jsx'
+import App from './App'
 
-createRoot(document.getElementById('root')).render(<MainFeed />)
+createRoot(document.getElementById('root')).render(<App />)

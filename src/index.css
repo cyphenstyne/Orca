@@ -1,1 +1,4 @@
 @import "tailwindcss";
+body {
+  background-color: black; /* This fixes the white overscroll issue */
+}
