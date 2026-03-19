@@ -8,7 +8,8 @@ i'm using blockchair APIs
 
 ## How to run:
 - Clone the repository
+- cd whale_hunter
 - Install node dependencies, tailwindcss react-router
-  - `npm install`
+  - `npm i`
   - `npm install tailwindcss @tailwindcss/vite react-router`
 - Run the app by typing `npm run dev`
