@@ -1,4 +1,4 @@
-# Tables:
+# Endpoints to hit for each chains:
 ---
 ## ***BTC & BTC-like:***
 
