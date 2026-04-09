@@ -13,6 +13,7 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         nodejs_24
+        bashInteractive
       ];
 
       shellHook = ''
