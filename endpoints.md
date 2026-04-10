@@ -3,9 +3,12 @@
 ## **BTC & BTC-like:**
 
 - **Transactions endpoint:** 
-  - https://api.blockchair.com/{:btc_chain}/transactions?q=output_total_usd(500000..)&s=time(desc)&limit=1&key=THE_KEY
+  - This is gonna give basic transaction information, the most important part for sorting transactions by their value in USD. This is where we find whales.
 
-- **{:btc_chain}:** bitcoin, bitcoin-cash, litecoin, bitcoin-sv, dogecoin, dash, groestlcoin, zcash, ecash, bitcoin/testnet
+  - https://api.blockchair.com/{:btc_chain}/transactions?q=output_total_usd(10000000..)&sort=time(desc)&limit=50&key=THE_KEY
+
+  - **{:btc_chain}:** bitcoin, bitcoin-cash, litecoin, bitcoin-sv, dogecoin, dash, groestlcoin, zcash, ecash, bitcoin/testnet
+
 ---
 
 ## **ETH:**
