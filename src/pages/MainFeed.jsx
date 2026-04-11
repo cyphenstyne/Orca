@@ -6,10 +6,10 @@ import { fetchChain } from '../services/fetchData';
 const WHALE_THRESHOLD_USD = 10000000;
 const LIMIT = 10;
 const CHAIN_INTERVAL_MS = 20000;
-const MAX_TRANSACTIONS = 50;
+const MAX_BATCHES = 20;
 
 function MainFeed() {
-  const [transactions, setTransactions] = useState([]);
+  const [batches, setBatches] = useState([]);
   const [error, setError] = useState(null);
   const chainIndexRef = useRef(0);
   const seenHashesRef = useRef(new Set());
@@ -21,17 +21,25 @@ function MainFeed() {
 
       try {
         const result = await fetchChain(chain, WHALE_THRESHOLD_USD, LIMIT);
-        const rawTxs = result.data.data; // blockchair wraps in .data.data
+        const rawTxs = result.data.data;
 
-        const newTxs = rawTxs
-          .filter(tx => !seenHashesRef.current.has(tx.hash))
-          .map(tx => ({ ...tx, chain })); // tag each tx with its chain
+        // filter out txs we've already seen
+        const newTxs = rawTxs.filter(tx => !seenHashesRef.current.has(tx.hash));
 
-        newTxs.forEach(tx => seenHashesRef.current.add(tx.hash));
+        // only add a card if there's actually something new
+        if (newTxs.length > 0) {
+          newTxs.forEach(tx => seenHashesRef.current.add(tx.hash));
 
-        setTransactions(prev =>
-          [...newTxs, ...prev].slice(0, MAX_TRANSACTIONS)
-        );
+          const batch = {
+            id: `${chain}-${Date.now()}`,
+            chain,
+            txs: newTxs,
+            fetchedAt: Date.now(),
+          };
+
+          setBatches(prev => [batch, ...prev].slice(0, MAX_BATCHES));
+        }
+
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -44,10 +52,10 @@ function MainFeed() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center gap-6 py-8 px-4">
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      {transactions.map(tx => (
-        <Card key={tx.hash} data={tx} />
+    <div className="min-h-screen w-full bg-black flex flex-col items-center gap-6 py-8 px-4">
+      {error && <p className="text-red-500 text-xs font-mono">{error}</p>}
+      {batches.map(batch => (
+        <Card key={batch.id} data={batch} />
       ))}
     </div>
   );
