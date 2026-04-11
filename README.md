@@ -9,7 +9,9 @@ i'm using blockchair APIs
 ## How to run:
 - Clone the repository
 - cd `whale_hunter`
-- Install node dependencies, tailwindcss react-router
-  - `npm i`
-  - `npm install tailwindcss @tailwindcss/vite react-router`
-- Run the app by typing `npm run dev`
+- Create a `.env` file in the root and add your Blockchair API key.
+- run `npm i`
+- and then finally run `npm run dev`
+
+## Here is a screenshot:
+![alt text](image.png)
