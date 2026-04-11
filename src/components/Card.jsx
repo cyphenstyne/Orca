@@ -1,4 +1,4 @@
-function DefaultCard(params) {
+function Card(params) {
   return (
     <div className="h-70 w-60 bg-white rounded">
       Card
@@ -6,4 +6,4 @@ function DefaultCard(params) {
   )
 }
 
-export default DefaultCard
+export default Card

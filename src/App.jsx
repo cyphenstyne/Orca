@@ -1,4 +1,4 @@
-import MainFeed from "./components/MainFeed/MainFeed"
+import MainFeed from './pages/MainFeed';
 
 function App(params) {
   return (
